@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Our Team - Kinder Garden </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -4px; width: 0;
+      height: 2px; background: #2563eb; transition: width 0.3s ease-in-out;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 bg-white/70 backdrop-blur-md shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    
+        <!-- Logo & School Name -->
+    <a href="index.html" class="flex items-center space-x-3">
+      <img src="Image/Logo.png" alt="School Logo" class="h-20 w-20 object-contain">
+      <span class="font-bold text-2xl text-blue-700">Kinder Garden Academy</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-8 font-medium">
+      <li>
+        <a href="index.html" class="relative group">
+          Home
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="programs.html" class="relative group">
+          Programs
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="teams.html" class="relative group">
+          Our Team
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="gallery.html" class="relative group">
+          Gallery
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="faqs.html" class="relative group">
+          FAQs
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+    </ul>
+
+        <!-- Login Button -->
+      <a href="https://edigitalnepal.com/sms/login" class="hidden md:inline-block px-5 py-2 rounded-full bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition">
+      Login
+    </a>
+
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden text-3xl text-blue-700 focus:outline-none">&#9776;</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden flex-col bg-white/90 backdrop-blur-md shadow-lg md:hidden">
+    <a href="index.html" class="py-3 px-6 border-b hover:bg-blue-50">Home</a>
+    <a href="programs.html" class="py-3 px-6 border-b hover:bg-blue-50">Programs</a>
+    <a href="teams.html" class="py-3 px-6 border-b hover:bg-blue-50">Our Team</a>
+    <a href="gallery.html" class="py-3 px-6 border-b hover:bg-blue-50 font-semibold text-blue-600">Gallery</a>
+    <a href="faqs.html" class="py-3 px-6 border-b hover:bg-blue-50">FAQs</a>
+    <a href="login.html" class="py-3 px-6">Login</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu JS -->
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+</script>
+
+<!-- Hero -->
+<section class="pt-40 pb-24 text-white text-center relative"
+         style="background: url('Image/Background/Background\ 2.jpeg') no-repeat center center; background-size: cover;">
+  <!-- Optional overlay for better text readability -->
+  <div class="absolute inset-0 bg-blue-600 bg-opacity-60"></div>
+
+  <div class="relative z-10">
+    <h2 class="text-4xl font-bold">Meet Our Team</h2>
+    <p class="mt-3 text-lg">Dedicated educators and staff working for student success.</p>
+  </div>
+</section>
+
+
+<style>
+  /* Animation for sections */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Navbar button hover animation */
+  .team-tab {
+    transition: all 0.3s ease;
+  }
+  .team-tab:hover {
+    transform: scale(1.05);
+  }
+</style>
+  
+<!-- Team Sub-Navbar -->
+  <div class="bg-white shadow-md mt-6 sticky top-20 z-40">
+    <div class="max-w-7xl mx-auto px-6">
+      <ul class="flex justify-center space-x-6 py-4">
+        <li><button class="team-tab font-semibold px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700" data-tab="staff">Member of Staff</button></li>
+        <li><button class="team-tab font-semibold px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-tab="preschool">Pre-School</button></li>
+        <li><button class="team-tab font-semibold px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-tab="primary">Primary School</button></li>
+        <li><button class="team-tab font-semibold px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300" data-tab="secondary">Secondary School</button></li>
+      </ul>
+    </div>
+  </div>
+
+<!-- Team Members Section -->
+<section class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+
+  <!-- Member of Staff -->
+  <div class="team-content fade-in active" id="staff">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Prithvi Bahadur Kunwar.jpg" alt="Staff 1" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Prithvi Bahadur Kunwar</h3>
+        <p class="text-gray-600">Principal</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Maha Singh Rawat.jpg" alt="Staff 2" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Maha Singh Rawat</h3>
+        <p class="text-gray-600">Administrator</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Taraman Kunwar.jpg" alt="Staff 3" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Taraman Kunwar</h3>
+        <p class="text-gray-600">Accountant</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Sher Bahadur Shah.jpg" alt="Staff 4" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Sher Bahadur Shah</h3>
+        <p class="text-gray-600">Academic Coordinator</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Laxman Mahata.jpg" alt="Staff 5" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Laxman Mahata</h3>
+        <p class="text-gray-600">Exam Coordinator</p>
+      </div>
+      <div class="hidden md:block"></div>
+    </div>
+  </div>
+
+  <!-- Pre-School -->
+  <div class="team-content fade-in hidden" id="preschool">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Debaki Bhandari.jpg" alt="Pre-School 1" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Debaki Bhandari</h3>
+        <p class="text-gray-600">English</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Janaki Swar.jpg" alt="Pre-School 2" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Janaki Swar</h3>
+        <p class="text-gray-600">Nepali
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Logo.png" alt="Pre-School 3" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Jharana Khadka</h3>
+        <p class="text-gray-600">Mathematics</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Manisha Dhami.jpg" alt="Pre-School 4" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Manisha Dhami</h3>
+        <p class="text-gray-600">Social Studies</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Manju Kunwar.jpg" alt="Pre-School 5" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Manju Kunwar</h3>
+        <p class="text-gray-600">General Knowledge</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Logo.png" alt="Pre-School 6" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Partima Kumari Bhatt</h3>
+        <p class="text-gray-600"> Rhymes/ Drawing </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Shanti Shah.jpg" alt="Pre-School 7" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Shanti Shah</h3>
+        <p class="text-gray-600">Scinece and Technology</p>
+      </div>
+      <div class="hidden md:block"></div>
+    </div>
+  </div>
+
+  <!-- Primary School -->
+  <div class="team-content fade-in hidden" id="primary">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Amrit Mahata.jpg" alt="Primary 1" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Amrit Mahata</h3>
+        <p class="text-gray-600">English</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Damodar Bhatta.jpg" alt="Primary 2" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Damodar Bhatta</h3>
+        <p class="text-gray-600"> Science and Technology</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Kiran Kunwar.jpg" alt="Primary 3" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Kiran Kunwar</h3>
+        <p class="text-gray-600">Mathematics</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Taraman Kunwar.jpg" alt="Primary 4" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Taraman Kunwar</h3>
+        <p class="text-gray-600">General Knowledge</p>
+      </div>
+       <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Sanu Tamrakar.jpg" alt="Primary 5" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mrs. Sanu Tamrakar</h3>
+        <p class="text-gray-600">Health and Physical Education</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary School -->
+  <div class="team-content fade-in hidden" id="secondary">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Laxman Mahata.jpg" alt="Secondary 1" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Laxman Mahata</h3>
+        <p class="text-gray-600">Social Studies</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Logo.png" alt="Secondary 2" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Lokraj Upadhyaya</h3>
+        <p class="text-gray-600">Science and Technology</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Maha Singh Rawat.jpg" alt="Secondary 3" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Maha Singh Rawat</h3>
+        <p class="text-gray-600"> Computer Science </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Pradeep Chaudhary.jpg" alt="Secondary 4" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Pradeep Chaudhary</h3>
+        <p class="text-gray-600">English</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Sher Bahadur Shah.jpg" alt="Secondary 5" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Sher Bahadur Shah</h3>
+        <p class="text-gray-600">Nepali</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+        <img src="Image/Teacher Photos/Suraj Japrel.jpg" alt="Secondary 6" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold text-blue-700 mb-1">Mr. Suraj Japrel</h3>
+        <p class="text-gray-600">Optional Mathematics</p>
+      </div>
+      <div class="hidden md:block"></div>
+      <div class="hidden md:block"></div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+const tabs = document.querySelectorAll('.team-tab');
+const contents = document.querySelectorAll('.team-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => {
+      t.classList.remove('bg-blue-600','text-white');
+      t.classList.add('bg-gray-200');
+    });
+    contents.forEach(c => c.classList.add('hidden'));
+    tab.classList.add('bg-blue-600','text-white');
+    tab.classList.remove('bg-gray-200');
+    const target = document.getElementById(tab.dataset.tab);
+    target.classList.remove('hidden');
+    setTimeout(() => {
+      target.classList.add('active');
+    }, 50);
+  });
+});
+</script>
+
+<!-- Footer -->
+<footer class="bg-blue-700 text-white pt-12">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+    <!-- About School -->
+    <div>
+      <h3 class="text-xl font-bold mb-6">Kinder Garden Academy</h3>
+      <p class="text-gray-200">
+        Empowering students for a brighter tomorrow with quality education, extracurricular activities, and holistic growth.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+      <ul class="space-y-3">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="programs.html" class="hover:underline">Programs</a></li>
+        <li><a href="teams.html" class="hover:underline">Our Team</a></li>
+        <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+        <li><a href="faqs.html" class="hover:underline">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+      <p class="mb-2">📍 Sanfehatbazzar-03, Achham, Nepal</p>
+      <p class="mb-2">📞 +977 9865820120</p>
+      <p>✉️ infokindergarden@edu.np</p>
+    </div>
+
+    <!-- Follow Us with Brand Colors -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Follow Us</h3>
+      <div class="flex space-x-5">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82V14.708h-3.263v-3.623h3.263V8.413c0-3.23 1.973-4.987 4.86-4.987 1.382 0 2.568.103 2.912.149v3.377h-2.001c-1.57 0-1.874.746-1.874 1.84v2.415h3.748l-.488 3.623h-3.26V24h6.391c.729 0 1.326-.597 1.326-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-pink-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.246 2.43.418a4.92 4.92 0 0 1 1.75 1.01 4.918 4.918 0 0 1 1.01 1.75c.172.46.362 1.26.418 2.43.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.246 1.97-.418 2.43a4.924 4.924 0 0 1-1.01 1.75 4.922 4.922 0 0 1-1.75 1.01c-.46.172-1.26.362-2.43.418-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.246-2.43-.418a4.922 4.922 0 0 1-1.75-1.01 4.92 4.92 0 0 1-1.01-1.75c-.172-.46-.362-1.26-.418-2.43-.058-1.266-.07-1.645-.07-4.85s.012-3.584.07-4.85c.056-1.17.246-1.97.418-2.43a4.918 4.918 0 0 1 1.01-1.75 4.921 4.921 0 0 1 1.75-1.01c.46-.172 1.26-.362 2.43-.418C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.013 7.052.072 5.78.13 4.81.332 4.042.635 3.203.98 2.48 1.522 1.85 2.15c-.63.63-1.172 1.353-1.515 2.192-.303.768-.505 1.738-.563 3.01C.013 8.332 0 8.736 0 12s.013 3.668.072 4.948c.058 1.272.26 2.242.563 3.01.343.84.885 1.563 1.515 2.192.63.63 1.353 1.172 2.192 1.515.768.303 1.738.505 3.01.563 1.28.059 1.684.072 4.948.072s3.668-.013 4.948-.072c1.272-.058 2.242-.26 3.01-.563a5.965 5.965 0 0 0 2.192-1.515 5.958 5.958 0 0 0 1.515-2.192c.303-.768.505-1.738.563-3.01.059-1.28.072-1.684.072-4.948s-.013-3.668-.072-4.948c-.058-1.272-.26-2.242-.563-3.01a5.957 5.957 0 0 0-1.515-2.192 5.96 5.96 0 0 0-2.192-1.515c-.768-.303-1.738-.505-3.01-.563C15.668.013 15.264 0 12 0z"/>
+            <path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4 4 0 0 1-4 4z"/>
+            <circle cx="18.406" cy="5.594" r="1.44"/>
+          </svg>
+        </a>
+        <!-- Twitter -->
+        <a href="https://twitter.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-sky-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M23.954 4.569c-.885.392-1.83.656-2.825.775a4.958 4.958 0 0 0 2.163-2.723 9.978 9.978 0 0 1-3.127 1.195 4.925 4.925 0 0 0-8.384 4.482 13.97 13.97 0 0 1-10.15-5.144 4.822 4.822 0 0 0-.666 2.475 4.922 4.922 0 0 0 2.188 4.1 4.903 4.903 0 0 1-2.229-.616v.06a4.928 4.928 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.084 4.936 4.936 0 0 0 4.604 3.417 9.868 9.868 0 0 1-6.102 2.104c-.396 0-.79-.023-1.17-.069a13.945 13.945 0 0 0 7.548 2.212c9.054 0 14-7.496 14-13.986 0-.21 0-.423-.015-.634A9.935 9.935 0 0 0 24 4.59z"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-blue-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.206 24 24 23.226 24 22.271V1.729C24 .774 23.206 0 22.225 0zM7.119 20.452H3.555V9h3.564v11.452zM5.337 7.555a2.067 2.067 0 1 1 0-4.135 2.067 2.067 0 0 1 0 4.135zm15.115 12.897h-3.557v-5.603c0-1.337-.025-3.058-1.864-3.058-1.868 0-2.153 1.46-2.153 2.968v5.693h-3.555V9h3.414v1.561h.049c.476-.901 1.637-1.85 3.369-1.85 3.604 0 4.272 2.372 4.272 5.457v6.284z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+ <!-- Copyright -->
+  <div class="mt-10 border-t border-blue-700 pt-4 text-center text-gray-400 text-sm">
+   <h1> © 2025 Kinder Garden Academy. All Rights Reserved </h1> Designed and Powered by
+    <a href="https://sudeeppandit.com.np" target="_blank" class="text-white-400 font-semibold hover:underline">
+      Sudeep Pandit
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
+

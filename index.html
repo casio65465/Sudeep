@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Kinder Garden Academy </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Navbar link underline animation */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #2563eb; /* Tailwind blue-600 */
+      transition: width 0.3s ease-in-out;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+<style>
+/* Add shadow for modern look */
+#noticeModal .modal-content {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+/* Title styling */
+#noticeModal .modal-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  #noticeModal .modal-dialog {
+    max-width: 95%;
+  }
+  #noticeModal .modal-body img {
+    height: 40%;
+  }
+  #noticeModal .modal-body p {
+    font-size: 0.95rem;
+  }
+}
+</style>
+
+<!-- Notice Popup Modal -->
+<div id="noticeModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
+  <div id="noticeBox" 
+       class="relative bg-white rounded-2xl shadow-2xl w-[90%] max-w-[880px] overflow-hidden transform -translate-y-5 scale-95 opacity-0 transition-all duration-500 ease-out">
+
+    <!-- Close Button -->
+    <button onclick="closeNotice()" 
+            class="absolute top-4 right-4 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center text-sm font-bold hover:bg-gray-800 transition">
+      ✕
+    </button>
+
+    <!-- Notice Image -->
+    <div class="w-full bg-gray-100 flex justify-center">
+      <img src="Image/Notice/Chatth Puja- 2082.jpg" alt="Notice" 
+           class="w-full max-w-[880px] h-auto">
+    </div>
+  </div>
+</div>
+
+
+
+<!-- JS to Control Notice Modal -->
+<script>
+  function openNotice() {
+    const modal = document.getElementById('noticeModal');
+    const box = document.getElementById('noticeBox');
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      box.classList.remove('scale-95', 'opacity-0', '-translate-y-5');
+      box.classList.add('scale-100', 'opacity-100', 'translate-y-0');
+    }, 50);
+  }
+
+  function closeNotice() {
+    const box = document.getElementById('noticeBox');
+    box.classList.remove('scale-100', 'opacity-100', 'translate-y-0');
+    box.classList.add('scale-95', 'opacity-0', '-translate-y-5');
+    setTimeout(() => {
+      document.getElementById('noticeModal').classList.add('hidden');
+    }, 300);
+  }
+
+  // Auto open on page load
+  window.addEventListener('load', () => {
+    openNotice();
+  });
+</script>
+
+
+
+<!-- Navbar -->
+
+<nav class="fixed w-full z-50 bg-white/70 backdrop-blur-md shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    
+    <!-- Logo & School Name -->
+    <a href="index.html" class="flex items-center space-x-3">
+      <img src="Image/Logo.png" alt="School Logo" class="h-20 w-20 object-contain">
+      <span class="font-bold text-2xl text-blue-700">Kinder Garden Academy</span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-8 font-medium">
+      <li>
+        <a href="index.html" class="relative group">
+          Home
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="programs.html" class="relative group">
+          Programs
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="teams.html" class="relative group">
+          Our Team
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="gallery.html" class="relative group">
+          Gallery
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+      <li>
+        <a href="faqs.html" class="relative group">
+          FAQs
+          <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Login Button -->
+      <a href="https://edigitalnepal.com/sms/login" class="hidden md:inline-block px-5 py-2 rounded-full bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition">
+      Login
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuBtn" class="md:hidden text-3xl text-blue-700 focus:outline-none">&#9776;</button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden flex-col bg-white/90 backdrop-blur-md shadow-lg md:hidden">
+    <a href="index.html" class="py-3 px-6 border-b hover:bg-blue-50">Home</a>
+    <a href="programs.html" class="py-3 px-6 border-b hover:bg-blue-50">Programs</a>
+    <a href="teams.html" class="py-3 px-6 border-b hover:bg-blue-50">Our Team</a>
+    <a href="gallery.html" class="py-3 px-6 border-b hover:bg-blue-50 font-semibold text-blue-600">Gallery</a>
+    <a href="faqs.html" class="py-3 px-6 border-b hover:bg-blue-50">FAQs</a>
+    <a href="login.html" class="py-3 px-6">Login</a>
+  </div>
+</nav>
+
+<!-- Mobile Menu JS -->
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+</script>
+
+
+
+
+<!-- Hero Section with Fullscreen Slider -->
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- Slides -->
+  <div class="absolute inset-0 transition-opacity duration-1000 opacity-100">
+    <img src="Image/Background/Background.jpg" alt="Slide 1" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+  <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
+    <img src="Image/Background/Background 2.jpeg" alt="Slide 2" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+  <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
+    <img src="Image/Background/Background 1.jpg" alt="Slide 3" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Slider Text / CTA -->
+  <div class="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-6">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4">Welcome to Kinder Garden Academy</h1>
+    <p class="text-lg md:text-xl mb-6">Empowering students for a brighter tomorrow</p>
+    <a href="programs.html" class="px-6 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700">
+      Visit Our Programs
+    </a>
+  </div>
+</section>
+
+
+  <!-- Principal's Message -->
+  <section class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <img src="Image/Teacher Photos/Prithvi Bahadur Kunwar.jpg" class="rounded-2xl shadow-lg w-full object-cover" alt="Principal">
+    </div>
+    <div>
+      <h2 class="text-3xl font-bold text-blue-700 mb-4">Message from the Principal</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Welcome to our school community! We believe in fostering academic excellence, creativity, and holistic growth in every student. 
+        Our goal is to nurture future leaders who will contribute positively to society. With a dedicated team of educators, we ensure a safe, 
+        supportive, and inspiring environment for all learners.
+      </p>
+      <p class="mt-4 font-semibold text-gray-800">- Prithvi Bahadur Kunwar, Principal</p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="bg-gray-100 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-5xl mb-4">🎓</div>
+          <h3 class="font-semibold text-xl mb-2">Quality Education</h3>
+          <p class="text-gray-600">Experienced teachers and modern curriculum tailored for excellence.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-5xl mb-4">🤝</div>
+          <h3 class="font-semibold text-xl mb-2">Student Support</h3>
+          <p class="text-gray-600">Personalized mentoring and guidance for every child’s growth.</p>
+        </div>
+        <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-5xl mb-4">⚽</div>
+          <h3 class="font-semibold text-xl mb-2">Extracurriculars</h3>
+          <p class="text-gray-600">Clubs, sports, and arts for holistic personality development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Slider -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12">What Our Students Say</h2>
+    <div class="relative overflow-hidden">
+      <div class="testimonial-slides flex transition-transform duration-1000">
+        <!-- Testimonial 1 -->
+        <div class="min-w-full flex flex-col items-center text-center px-6">
+          <img src="Image/Students/Biplove Kunwar.jpg" class="w-28 h-28 rounded-full shadow mb-4" alt="Student">
+          <p class="italic text-gray-600 max-w-xl">"This school has given me the confidence to pursue my dreams. The teachers are supportive and inspiring!"</p>
+          <p class="mt-3 font-semibold">- Biplove Kunwar (2080).</p>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="min-w-full flex flex-col items-center text-center px-6">
+          <img src="Image/Students/Rabina Chaudhary.jpg" class="w-28 h-28 rounded-full shadow mb-4" alt="Student">
+          <p class="italic text-gray-600 max-w-xl">"A wonderful environment to grow academically and personally. I cherish my journey here."</p>
+          <p class="mt-3 font-semibold">- Rabina Chaudhary (2080).</p>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="min-w-full flex flex-col items-center text-center px-6">
+          <img src="Image/Students/Alisha Kunwar.jpg" class="w-28 h-28 rounded-full shadow mb-4" alt="Student">
+          <p class="italic text-gray-600 max-w-xl">"The extracurricular programs helped me discover my talents and make lifelong friends."</p>
+          <p class="mt-3 font-semibold">- Alisha Kunwar (2081). </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer class="bg-blue-700 text-white pt-12">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+    <!-- About School -->
+    <div>
+      <h3 class="text-xl font-bold mb-6">Kinder Garden Academy </h3>
+      <p class="text-gray-200">
+        Empowering students for a brighter tomorrow with quality education, extracurricular activities, and holistic growth.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+      <ul class="space-y-3">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="programs.html" class="hover:underline">Programs</a></li>
+        <li><a href="teams.html" class="hover:underline">Our Team</a></li>
+        <li><a href="gallery.html" class="hover:underline">Gallery</a></li>
+        <li><a href="faqs.html" class="hover:underline">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Contact Us</h3>
+      <p class="mb-2">📍 Sanfehatbazzar-03, Achham, Nepal</p>
+      <p class="mb-2">📞 +977 9865820120</p>
+      <p>✉️ infokindergarden@edu.np</p>
+    </div>
+
+    <!-- Follow Us with Brand Colors -->
+    <div>
+      <h3 class="text-lg font-semibold mb-6">Follow Us</h3>
+      <div class="flex space-x-5">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-blue-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82V14.708h-3.263v-3.623h3.263V8.413c0-3.23 1.973-4.987 4.86-4.987 1.382 0 2.568.103 2.912.149v3.377h-2.001c-1.57 0-1.874.746-1.874 1.84v2.415h3.748l-.488 3.623h-3.26V24h6.391c.729 0 1.326-.597 1.326-1.326V1.326C24 .597 23.403 0 22.675 0z"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-pink-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.246 2.43.418a4.92 4.92 0 0 1 1.75 1.01 4.918 4.918 0 0 1 1.01 1.75c.172.46.362 1.26.418 2.43.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.246 1.97-.418 2.43a4.924 4.924 0 0 1-1.01 1.75 4.922 4.922 0 0 1-1.75 1.01c-.46.172-1.26.362-2.43.418-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.246-2.43-.418a4.922 4.922 0 0 1-1.75-1.01 4.92 4.92 0 0 1-1.01-1.75c-.172-.46-.362-1.26-.418-2.43-.058-1.266-.07-1.645-.07-4.85s.012-3.584.07-4.85c.056-1.17.246-1.97.418-2.43a4.918 4.918 0 0 1 1.01-1.75 4.921 4.921 0 0 1 1.75-1.01c.46-.172 1.26-.362 2.43-.418C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.013 7.052.072 5.78.13 4.81.332 4.042.635 3.203.98 2.48 1.522 1.85 2.15c-.63.63-1.172 1.353-1.515 2.192-.303.768-.505 1.738-.563 3.01C.013 8.332 0 8.736 0 12s.013 3.668.072 4.948c.058 1.272.26 2.242.563 3.01.343.84.885 1.563 1.515 2.192.63.63 1.353 1.172 2.192 1.515.768.303 1.738.505 3.01.563 1.28.059 1.684.072 4.948.072s3.668-.013 4.948-.072c1.272-.058 2.242-.26 3.01-.563a5.965 5.965 0 0 0 2.192-1.515 5.958 5.958 0 0 0 1.515-2.192c.303-.768.505-1.738.563-3.01.059-1.28.072-1.684.072-4.948s-.013-3.668-.072-4.948c-.058-1.272-.26-2.242-.563-3.01a5.957 5.957 0 0 0-1.515-2.192 5.96 5.96 0 0 0-2.192-1.515c-.768-.303-1.738-.505-3.01-.563C15.668.013 15.264 0 12 0z"/>
+            <path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4 4 0 0 1-4 4z"/>
+            <circle cx="18.406" cy="5.594" r="1.44"/>
+          </svg>
+        </a>
+        <!-- Twitter -->
+        <a href="https://twitter.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-sky-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M23.954 4.569c-.885.392-1.83.656-2.825.775a4.958 4.958 0 0 0 2.163-2.723 9.978 9.978 0 0 1-3.127 1.195 4.925 4.925 0 0 0-8.384 4.482 13.97 13.97 0 0 1-10.15-5.144 4.822 4.822 0 0 0-.666 2.475 4.922 4.922 0 0 0 2.188 4.1 4.903 4.903 0 0 1-2.229-.616v.06a4.928 4.928 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.084 4.936 4.936 0 0 0 4.604 3.417 9.868 9.868 0 0 1-6.102 2.104c-.396 0-.79-.023-1.17-.069a13.945 13.945 0 0 0 7.548 2.212c9.054 0 14-7.496 14-13.986 0-.21 0-.423-.015-.634A9.935 9.935 0 0 0 24 4.59z"/>
+          </svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-blue-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.206 24 24 23.226 24 22.271V1.729C24 .774 23.206 0 22.225 0zM7.119 20.452H3.555V9h3.564v11.452zM5.337 7.555a2.067 2.067 0 1 1 0-4.135 2.067 2.067 0 0 1 0 4.135zm15.115 12.897h-3.557v-5.603c0-1.337-.025-3.058-1.864-3.058-1.868 0-2.153 1.46-2.153 2.968v5.693h-3.555V9h3.414v1.561h.049c.476-.901 1.637-1.85 3.369-1.85 3.604 0 4.272 2.372 4.272 5.457v6.284z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="mt-10 border-t border-blue-700 pt-4 text-center text-gray-400 text-sm">
+   <h1> © 2025 Kinder Garden Academy. All Rights Reserved </h1> Designed and Powered by
+    <a href="https://sudeeppandit.com.np" target="_blank" class="text-white-400 font-semibold hover:underline">
+      Sudeep Pandit
+    </a>
+  </div>
+</footer>
+
+
+  <!-- JS for sliders -->
+  <script>
+    // Hero Background Slider
+    // Background slider
+    const slides = document.querySelectorAll('section.relative > div.absolute');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('opacity-100');
+      slides[current].classList.add('opacity-0');
+      current = (current + 1) % slides.length;
+      slides[current].classList.remove('opacity-0');
+      slides[current].classList.add('opacity-100');
+    }, 5000);
+
+
+    // Testimonials Slider
+    const testimonialSlides = document.querySelector('.testimonial-slides');
+    let currentTestimonial = 0;
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % 3;
+      testimonialSlides.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+    }, 5000);
+  </script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
