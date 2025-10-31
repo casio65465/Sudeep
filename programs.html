@@ -242,6 +242,54 @@
     </a>
   </div>
 </footer>
+<script>
+(function(){
+  // Prevent DevTools shortcuts, right-click, and source view
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.onkeydown = function(e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key.toUpperCase())) ||
+      (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
+    ) {
+      e.preventDefault(); 
+      e.stopPropagation(); 
+      return false;
+    }
+  };
+
+  // Anti-inspect detection trick
+  (function protect(){
+    const x = new Image();
+    Object.defineProperty(x, 'id', {
+      get: function() {
+        alert("⚠️ Developer tools are disabled!");
+        location.reload();
+      }
+    });
+    console.log(x);
+  })();
+
+  // Small obfuscation block
+  const _0x3b1d=["log","get","id","reload","⚠️ Developer tools are disabled!"];
+  const _0x4f2b=function(_0x3b1d,_0x4f2b){return _0x3b1d[_0x4f2b];};
+  (function(){
+    const _img=new Image();
+    Object.defineProperty(_img,_0x4f2b(_0x3b1d,2),{
+      [_0x4f2b(_0x3b1d,1)]:function(){
+        alert(_0x4f2b(_0x3b1d,4));
+        window.location[_0x4f2b(_0x3b1d,3)]();
+      }
+    });
+    console[_0x4f2b(_0x3b1d,0)](_img);
+  })();
+
+  // Disable dragging and selection
+  document.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+})();
+</script>
 
 </body>
 </html>
+
