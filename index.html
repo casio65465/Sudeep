@@ -6,6 +6,52 @@
   <title> Kinder Garden Academy </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+  /* Scroll to Top Button */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  background-color: #fca311; /* Light orange */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+
+/* Show animation */
+#scrollTopBtn.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover glow + lift effect */
+#scrollTopBtn:hover {
+  background-color: #ff9f1c; /* Slightly brighter orange */
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 159, 28, 0.7),
+              0 0 40px rgba(255, 159, 28, 0.5);
+}
+
+/* Click rotation animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#scrollTopBtn.spin {
+  animation: spin 0.6s linear;
+}
+
     /* Navbar link underline animation */
     .nav-link {
       position: relative;
@@ -27,6 +73,15 @@
 
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
+  
+<!-- Preloader Section -->
+<div id="preloader" class="fixed inset-0 bg-white flex flex-col items-center justify-center z-50">
+  <img src="Image/Logo.png" alt="Logo" class="w-28 h-28 animate-pulse" id="logo">
+  <h2 class="mt-4 text-xl font-semibold text-blue-600">Kinder Garden Academy</h2>
+</div>
+
+
+
 
 <style>
 /* Add shadow for modern look */
@@ -51,6 +106,25 @@
   #noticeModal .modal-body p {
     font-size: 0.95rem;
   }
+}
+</style>
+
+<style>
+/* Keyframes for smooth zoom and fade */
+@keyframes logoIntro {
+  0% { opacity: 0; transform: scale(0.7) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.1) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+#logo {
+  animation: logoIntro 2s ease-in-out forwards;
+}
+
+/* Fade-out animation */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
 }
 </style>
 
@@ -150,9 +224,29 @@
     </ul>
 
     <!-- Login Button -->
-      <a href="https://edigitalnepal.com/sms/login" class="hidden md:inline-block px-5 py-2 rounded-full bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition">
-      Login
-    </a>
+      <!-- Animated Login Button -->
+<a href="https://edigitalnepal.com/sms/login"
+  class="relative hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white font-semibold shadow-md overflow-hidden group transition-all duration-500 ease-in-out">
+  
+  <!-- Moving Shine Effect -->
+  <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></span>
+  
+  <!-- Lock Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+       stroke-width="2.5" stroke="white" class="w-5 h-5 relative z-10">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M12 11V17M8 11V7a4 4 0 118 0v4m-8 0h8a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2v-6a2 2 0 012-2z" />
+  </svg>
+
+  <!-- Button Text -->
+  <span class="relative z-10 group-hover:scale-110 transition-transform duration-300">
+    Login
+  </span>
+</a>
+
+
+
+
 
     <!-- Mobile Menu Button -->
     <button id="menuBtn" class="md:hidden text-3xl text-blue-700 focus:outline-none">&#9776;</button>
@@ -318,7 +412,7 @@
           </svg>
         </a>
         <!-- Instagram -->
-        <a href="https://www.instagram.com/YourPage" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-pink-500">
+        <a href="https://www.instagram.com/kinder_garden_academy/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300 hover:text-pink-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.246 2.43.418a4.92 4.92 0 0 1 1.75 1.01 4.918 4.918 0 0 1 1.01 1.75c.172.46.362 1.26.418 2.43.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.246 1.97-.418 2.43a4.924 4.924 0 0 1-1.01 1.75 4.922 4.922 0 0 1-1.75 1.01c-.46.172-1.26.362-2.43.418-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.246-2.43-.418a4.922 4.922 0 0 1-1.75-1.01 4.92 4.92 0 0 1-1.01-1.75c-.172-.46-.362-1.26-.418-2.43-.058-1.266-.07-1.645-.07-4.85s.012-3.584.07-4.85c.056-1.17.246-1.97.418-2.43a4.918 4.918 0 0 1 1.01-1.75 4.921 4.921 0 0 1 1.75-1.01c.46-.172 1.26-.362 2.43-.418C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.013 7.052.072 5.78.13 4.81.332 4.042.635 3.203.98 2.48 1.522 1.85 2.15c-.63.63-1.172 1.353-1.515 2.192-.303.768-.505 1.738-.563 3.01C.013 8.332 0 8.736 0 12s.013 3.668.072 4.948c.058 1.272.26 2.242.563 3.01.343.84.885 1.563 1.515 2.192.63.63 1.353 1.172 2.192 1.515.768.303 1.738.505 3.01.563 1.28.059 1.684.072 4.948.072s3.668-.013 4.948-.072c1.272-.058 2.242-.26 3.01-.563a5.965 5.965 0 0 0 2.192-1.515 5.958 5.958 0 0 0 1.515-2.192c.303-.768.505-1.738.563-3.01.059-1.28.072-1.684.072-4.948s-.013-3.668-.072-4.948c-.058-1.272-.26-2.242-.563-3.01a5.957 5.957 0 0 0-1.515-2.192 5.96 5.96 0 0 0-2.192-1.515c-.768-.303-1.738-.505-3.01-.563C15.668.013 15.264 0 12 0z"/>
             <path d="M12 5.838A6.162 6.162 0 1 0 18.162 12 6.162 6.162 0 0 0 12 5.838zm0 10.162A4 4 0 1 1 16 12a4 4 0 0 1-4 4z"/>
@@ -375,7 +469,9 @@
     }, 5000);
   </script>
 
-  <script>
+
+
+<script>
 (function(){
   // Prevent DevTools shortcuts, right-click, and source view
   document.addEventListener('contextmenu', e => e.preventDefault());
@@ -424,12 +520,46 @@
 </script>
 
 
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="white" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+<script>
+  const scrollBtn = document.getElementById("scrollTopBtn");
+
+  // Show/hide the button when scrolling
+  window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      scrollBtn.classList.add("show");
+    } else {
+      scrollBtn.classList.remove("show");
+    }
+  });
+
+  // Smooth scroll + spin animation
+  scrollBtn.addEventListener("click", () => {
+    scrollBtn.classList.add("spin");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => scrollBtn.classList.remove("spin"), 600);
+  });
+</script>
+
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("fade-out");
+    setTimeout(() => preloader.style.display = "none", 900); // Hide after fade-out
+  });
+</script>
+
+
 
 
 </body>
 </html>
-
-
 
 
 
